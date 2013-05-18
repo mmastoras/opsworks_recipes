@@ -1,0 +1,5 @@
+check process memcached_<%= node[:app_name] %>_11211
+  with pidfile /var/run/memcached.pid
+  start program = "/etc/init.d/memcached restart"
+  stop program = "/etc/init.d/memcached stop"
+  group memcached_<%= node[:app_name] %>

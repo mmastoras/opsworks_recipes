@@ -1,0 +1,6 @@
+check process node
+with pidfile /data/<%= node[:app_name] %>/shared/pids/macroni.pid
+  start program = "/sbin/start macroni"
+  stop program = "/sbin/stop macroni"
+  alert alert@spongecell.com
+  group node_<%= node[:app_name] %>

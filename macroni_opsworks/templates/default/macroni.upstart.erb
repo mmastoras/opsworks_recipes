@@ -1,0 +1,9 @@
+description "macroni node.js server"
+author      "Mark Mastoras for Spongecell.com"
+
+start on runlevel [2345]
+stop on runlevel [!2345]
+
+script
+    exec /bin/su spongecell -c "HOME=/data/<%= node[:app_name] %> TZ=/usr/share/zoneinfo/PST8PDT PORT=<%= @port %> NODE_ENV=<%= node[:env] %> AIRBRAKE_API_KEY=<%= @airbrake_api_key %> <%= @node_binary %> <%= @node_script %> >> /data/<%= node[:app_name] %>/shared/log/<%= node[:app_name] %>.log 2>&1"
+end script
